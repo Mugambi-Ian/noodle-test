@@ -1,0 +1,236 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pyramids API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/v1/pyramid/{pyramidID}": {
+            "get": {
+                "tags": [
+                    "pyramid-controller"
+                ],
+                "operationId": "51e633985e5090b499b7ff37f36e8a0d",
+                "parameters": [
+                    {
+                        "name": "pyramidID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Pyramid By Id"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "pyramid-controller"
+                ],
+                "operationId": "ef16bf7cce5796f730c038de56aa5476",
+                "parameters": [
+                    {
+                        "name": "pyramidID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PyramidEditDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created a new pyramid record"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "pyramid-controller"
+                ],
+                "operationId": "314b8c7f37f6424559d0604e37568297",
+                "parameters": [
+                    {
+                        "name": "pyramidID",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Disable/Delete a Pyramid By ID"
+                    }
+                }
+            }
+        },
+        "/v1/pyramid": {
+            "get": {
+                "tags": [
+                    "pyramid-controller"
+                ],
+                "operationId": "03516176c0623a49d1065ef9b699a900",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "widthMin",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "widthMax",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "heightMin",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    },
+                    {
+                        "name": "heightMax",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "minimum": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Pyramids By SearchParams"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "pyramid-controller"
+                ],
+                "operationId": "7c6c29dd42d721c0bc260a3124236d98",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PyramidCreateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Created a new pyramid record"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PyramidCreateDTO": {
+                "title": "PyramidCreateDTO",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "width": {
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "height": {
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "length": {
+                        "type": "integer",
+                        "default": 0
+                    }
+                },
+                "type": "object"
+            },
+            "PyramidEditDTO": {
+                "title": "PyramidEditDTO",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "width": {
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "height": {
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "length": {
+                        "type": "integer",
+                        "default": 0
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

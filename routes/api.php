@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\PyramidController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::prefix('v1/pyramid')->group(function () {
+
+
+    Route::post('/', [PyramidController::class,'post']);
+    Route::put('/{pyramidID}', [PyramidController::class,'put']);
+    Route::delete('/{pyramidID}',[PyramidController::class,'delete']);
+
+
+    Route::get('/',[PyramidController::class,'getBySearchParams']);
+    Route::get('/{pyramidID}', [PyramidController::class,'getById']);
 });
