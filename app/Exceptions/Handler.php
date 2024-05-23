@@ -29,5 +29,8 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Exception $e) {
             return ApiResponse::error($e->getCode(), $e->getMessage());
         });
+        $this->reportable(function (Throwable $e) {
+            return ApiResponse::error($e->getCode(), $e->getMessage());
+        });
     }
 }

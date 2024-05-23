@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/','/v1/documentation');
+Route::redirect('/','/documentation/v1');
