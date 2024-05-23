@@ -1,6 +1,3 @@
-# Laravel Project Setup Guide
-
-Let's get you started by cloning the repository, installing dependencies, setting up the database, and starting the server.
 
 ## Prerequisites
 
